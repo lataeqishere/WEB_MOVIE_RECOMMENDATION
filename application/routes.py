@@ -8,3 +8,7 @@ def index():
 @app.route("/catalog")
 def catalog():
     return render_template("catalog.html", navcatalog=True)
+
+@app.route("/recommend")
+def recommend():
+    return render_template("recommend.html", navrecommend=True)
