@@ -17,6 +17,10 @@ def recommend():
 def reviews():
     return render_template("reviews.html", navreviews=True)
 
+@app.route("/about")
+def about():
+    return render_template("about.html", navabout=True)
+
 @app.route("/login")
 def login():
     return render_template("login.html", navlogin=True)
