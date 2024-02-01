@@ -12,3 +12,7 @@ def catalog():
 @app.route("/recommend")
 def recommend():
     return render_template("recommend.html", navrecommend=True)
+
+@app.route("/reviews")
+def reviews():
+    return render_template("reviews.html", navreviews=True)
