@@ -5,6 +5,10 @@ ratings_ = [{'Rating': 1.0,'Name': "test1"},
             {'Rating': 2.0,'Name': "test2"},
             {'Rating': 3.0,'Name': "test3"}]
 
+preds_ = [{'Predicted_Rating': 3.0,'Name': "test4"},
+            {'Predicted_Rating': 2.0,'Name': "test5"},
+            {'Predicted_Rating': 1.0,'Name': "test6"}]
+
 @app.route("/")
 def index():
     return render_template("index.html", navindex=True)
@@ -15,7 +19,7 @@ def catalog():
 
 @app.route("/recommend")
 def recommend():
-    return render_template("recommend.html", navrecommend=True)
+    return render_template("recommend.html", navrecommend=True, predictions=preds_)
 
 @app.route("/reviews")
 def reviews():
