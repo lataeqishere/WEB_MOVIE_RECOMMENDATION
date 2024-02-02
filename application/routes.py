@@ -1,5 +1,9 @@
 from application import app
-from flask import render_template, url_for
+from flask import render_template
+
+ratings_ = [{'Rating': 1.0,'Name': "test1"},
+            {'Rating': 2.0,'Name': "test2"},
+            {'Rating': 3.0,'Name': "test3"}]
 
 @app.route("/")
 def index():
@@ -15,7 +19,7 @@ def recommend():
 
 @app.route("/reviews")
 def reviews():
-    return render_template("reviews.html", navreviews=True)
+    return render_template("reviews.html", navreviews=True, ratings=ratings_)
 
 @app.route("/about")
 def about():
