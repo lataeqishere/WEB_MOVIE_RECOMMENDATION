@@ -1,13 +1,13 @@
 from application import app
-from flask import render_template
+from flask import Flask, render_template, request, flash, redirect, url_for,session
 
 ratings_ = [{'Rating': 1.0,'Name': "test1"},
             {'Rating': 2.0,'Name': "test2"},
             {'Rating': 3.0,'Name': "test3"}]
 
-preds_ = [{'Predicted_Rating': 3.0,'Name': "test4"},
-            {'Predicted_Rating': 2.0,'Name': "test5"},
-            {'Predicted_Rating': 1.0,'Name': "test6"}]
+preds_ = [{'Predicted_Rating': 3.0,'Name': "test1"},
+            {'Predicted_Rating': 3.0,'Name': "test2"},
+            {'Predicted_Rating': 3.0,'Name': "test3"}]
 
 @app.route("/")
 def index():
@@ -32,3 +32,7 @@ def about():
 @app.route("/login")
 def login():
     return render_template("login.html", navlogin=True)
+
+@app.route("/register",methods=['GET','POST'])
+def register():
+    return render_template("register.html")
