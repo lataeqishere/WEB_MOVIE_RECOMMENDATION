@@ -3,9 +3,30 @@
 {% block content %}
     <div class="row">
         <div class="col-md-12 text-center">
-            <br/><br/>
-            <h1>Coming soon</h1>
-            <br7>
+            <br/><h1>Rated movies</h1><br/>
         </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <table id="movietable" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Movie Title</th>
+                        <th>Rating</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for r in ratings %}
+                    <tr>
+                        <td> {{ r["Name"] }} </td>
+                        <td> {{ r["Rating"] }} </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-2"></div>
     </div>
 {% endblock %}
