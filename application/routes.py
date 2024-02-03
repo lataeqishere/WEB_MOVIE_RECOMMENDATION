@@ -57,4 +57,17 @@ def login():
 
 @app.route("/register",methods=['GET','POST'])
 def register():
+    if request.method=='POST':
+        try:
+            name=request.form['name']
+            email=request.form['email']
+            con=sqlite3.connect('database.db')
+            cur=con.cursor()
+            cur.execute('insert into customer(name,email)values(?,?)',(name,email))
+            con.commit()
+            flash("Record Added Successfully","success")
+        except:
+            flash('Error in insert operation','danger')
+        finally:
+            con.close()
     return render_template("register.html")
