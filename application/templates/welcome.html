@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container">
+        <h1 class="text-success">Welcome : {{session['name']}}</h1>
+        <hr>
+        <a href="{{url_for('logout')}}" class="btn btn-primary btn-block">Logout</a>
+</div>
+{% endblock %}
