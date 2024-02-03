@@ -76,3 +76,7 @@ def register():
 def logout():
     session.clear()
     return redirect(url_for('login'))
+
+@app.route('/welcome',methods=["GET","POST"])
+def welcome():
+    return render_template('welcome.html')
