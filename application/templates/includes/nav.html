@@ -6,19 +6,18 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ms-auto">
-
-        <a class="nav-link " href="{{ url_for('index') }}"><span class="{% if navindex %}activate{% endif %}">Home</span></a>
-
-        <a class="nav-link " href="{{ url_for('catalog') }}"><span class="{% if navcatalog %}activate{% endif %}">Catalog</span></a>
-
-        <a class="nav-link " href="{{ url_for('recommend') }}"><span class="{% if navrecommend %}activate{% endif %}">Recommend</span></a>
-
-        <a class="nav-link " href="{{ url_for('reviews') }}"><span class="{% if navreviews %}activate{% endif %}">Reviews</span></a>
-
-        <a class="nav-link " href="{{ url_for('about') }}"><span class="{% if navabout %}activate{% endif %}">About</span></a>
-
-        <a class="nav-link " href="{{ url_for('login') }}"><span class="{% if navlogin %}activate{% endif %}">Login</span></a>
-
+        {% if 'name' in session %}
+          <a class="nav-link " href="{{ url_for('index') }}"><span class="{% if navindex %}activate{% endif %}">Home</span></a>
+          <a class="nav-link " href="{{ url_for('catalog') }}"><span class="{% if navcatalog %}activate{% endif %}">Catalog</span></a>
+          <a class="nav-link " href="{{ url_for('recommend') }}"><span class="{% if navrecommend %}activate{% endif %}">Recommend</span></a>
+          <a class="nav-link " href="{{ url_for('reviews') }}"><span class="{% if navreviews %}activate{% endif %}">Top Rated Movies</span></a>
+          <a class="nav-link " href="{{ url_for('new') }}"><span class="{% if navnew %}activate{% endif %}">New Release Movies</span></a>
+          <a class="nav-link " href="{{ url_for('pop') }}"><span class="{% if navpop %}activate{% endif %}">Popularity</span></a>
+          <a class="nav-link " href="{{ url_for('about') }}"><span class="{% if navabout %}activate{% endif %}">About</span></a>
+          <a class="nav-link" href="{{ url_for('welcome') }}">Welcome, {{ session['name'] }}</a>
+        {% else %}
+          <a class="nav-link" href="{{ url_for('login') }}"><span class="{% if navlogin %}activate{% endif %}">Login</span></a>
+        {% endif %}
       </div>
     </div>
   </div>
