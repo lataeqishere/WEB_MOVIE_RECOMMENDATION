@@ -1,6 +1,20 @@
-<nav class="navbar navbar-expand-lg "style="background-color: #712cf9;"data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg "style="background-color: black;"data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"> <img src=" {{ url_for('static',filename='images/logo.jpg') }} "style="width: 15%; border-radius: 50%;"> Movie Recommendation</a>
+    {% if 'name' in session %}
+    <div class="search-box">
+      <nav class= "{% if navsearch %}activate{% endif %} navbar navbar-expand-lg"style=" background-color: black;"data-bs-theme="light">
+        <form class="d-flex" role="search" method="POST" action="{{ url_for('search') }}">
+            <input
+                type="text" 
+                class="form-control me-2"
+                name="query"
+                placeholder="ex. Actors, Movie Title">
+                <button class="btn btn-nav" type="submit">Search</button>
+        </form>
+      </nav>
+    </div>
+    {% endif %}
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,15 +22,12 @@
       <div class="navbar-nav ms-auto">
         {% if 'name' in session %}
           <a class="nav-link " href="{{ url_for('index') }}"><span class="{% if navindex %}activate{% endif %}">Home</span></a>
-          <a class="nav-link " href="{{ url_for('catalog') }}"><span class="{% if navcatalog %}activate{% endif %}">Catalog</span></a>
           <a class="nav-link " href="{{ url_for('recommend') }}"><span class="{% if navrecommend %}activate{% endif %}">Recommend</span></a>
-          <a class="nav-link " href="{{ url_for('reviews') }}"><span class="{% if navreviews %}activate{% endif %}">Top Rated Movies</span></a>
-          <a class="nav-link " href="{{ url_for('new') }}"><span class="{% if navnew %}activate{% endif %}">New Release Movies</span></a>
-          <a class="nav-link " href="{{ url_for('pop') }}"><span class="{% if navpop %}activate{% endif %}">Popularity</span></a>
+          <a class="nav-link " href="{{ url_for('toprated') }}"><span class="{% if navtoprated %}activate{% endif %}">Top Rated Movies</span></a>
+          <a class="nav-link " href="{{ url_for('newrelease') }}"><span class="{% if navnewrelease %}activate{% endif %}">New Release Movies</span></a>
+          <a class="nav-link " href="{{ url_for('popularity') }}"><span class="{% if navpopularity %}activate{% endif %}">Popularity</span></a>
           <a class="nav-link " href="{{ url_for('about') }}"><span class="{% if navabout %}activate{% endif %}">About</span></a>
           <a class="nav-link" href="{{ url_for('welcome') }}">Welcome, {{ session['name'] }}</a>
-        {% else %}
-          <a class="nav-link" href="{{ url_for('login') }}"><span class="{% if navlogin %}activate{% endif %}">Login</span></a>
         {% endif %}
       </div>
     </div>
