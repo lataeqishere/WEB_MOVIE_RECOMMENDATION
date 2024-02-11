@@ -31,7 +31,7 @@
         <div class="col-md-6">
             <div class="card login-card shadow-sm">
                 <div class="card-body">
-                    <h1 class="page-header text-primary text-center">Login</h1>
+                    <h1 class="page-header text-center">Login</h1>
 
                     {% with messages = get_flashed_messages(with_categories=true) %}
                         {% if messages %}
@@ -51,8 +51,8 @@
                             <input type="password" placeholder="Password" id="password" name="password" class="form-control" required>
                         </div>
                         <div class="d-grid gap-2">
-                            <input type="submit" value="Login" class="btn btn-success">
-                            <a href="{{url_for('register')}}" class="btn btn-primary">Register</a>
+                            <input type="submit" value="Login" class="btn btn-sub">
+                            <a href="{{url_for('register')}}" class="btn btn-gr">Register</a>
                         </div>
                     </form>
                 </div>
