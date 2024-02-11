@@ -1,31 +1,30 @@
 {% extends "layout.html" %}
 
 {% block content %}
-        <div class="col-md-12 text-center">
+<div class="container-fluid">
+    <div class="row">
+        <hr>
             <br/><h1>Movies chosen for you</h1><br/>
-        </div>
     </div>
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-                <table id="movietable" class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Movie Title</th>
-                            <th>Predicted Rating</th>
-                            <th>Overview</th>
-                        </tr>
-                    </thead>
 
-                    <tbody>
-                        {% for movie in movies[:5] %}
-                        <tr>
-                            <td> {{ movie["title"] }} </td>
-                            <td> {{ movie["vote_average"] }} </td>
-                            <td> {{ movie["overview"] }} </td>
+        <table id="movietable" class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Movie Title</th>
+                    <th>Predicted Rating</th>
+                    <th>Overview</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for movie in movies[:5] %}
+                    <tr>
+                        <td> {{ movie["title"] }} </td>
+                        <td> {{ movie["vote_average"] }} </td>
+                        <td> {{ movie["overview"] }} </td>
                         </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-md-2"></div>
+                {% endfor %}
+            </tbody>
+        </table>
+</div>
 {% endblock %}
