@@ -1,36 +1,63 @@
 {% extends "layout.html" %}
 
-{% block content %}
-    <div class="container" style="margin-top:100px">
-        <div class="col-md-offset-1 col-md-10" >
-            <div class="col-md-offset-3 col-md-5 center-form" >
-                <div class="shadow">
-                    <form action="/login" method="POST" autocomplete="off">
-                        <h1 class="page-header text-primary">Login</h1>
+{% block styles %}
+<style>
+    .login-card {
+        max-width: 400px;
+        margin: 50px auto;
+    }
 
-                        {% with messages = get_flashed_messages(with_categories=true) %}
-                    {% if messages %}
-                        {% for category,message in messages %}
-                            <div class="alert alert-{{category}}">{{message}}</div>
-                        {% endfor %}
-                    {% endif %}
+    .login-card .form-label {
+        font-weight: bold;
+    }
+
+    .login-card .form-control {
+        margin-bottom: 15px;
+    }
+
+    .login-card .btn {
+        margin-top: 15px;
+    }
+
+    .login-card .alert {
+        margin-bottom: 15px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card login-card shadow-sm">
+                <div class="card-body">
+                    <h1 class="page-header text-primary text-center">Login</h1>
+
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category,message in messages %}
+                                <div class="alert alert-{{category}}" role="alert">{{message}}</div>
+                            {% endfor %}
+                        {% endif %}
                     {% endwith %}
 
-                        <div class="form-group">
-                            <labe>Username</labe>
-                            <input type="text" name="name" class="form-control" required>
+                    <form action="/login" method="POST" autocomplete="off">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Username</label>
+                            <input type="text" placeholder="Username" id="name" name="name" class="form-control" required>
                         </div>
-                        <div class="form-group">
-                            <labe>Password</labe>
-                            <input type="password" name="password" class="form-control" required>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" placeholder="Password" id="password" name="password" class="form-control" required>
                         </div>
-                        <div class="form-group">
-                            <input type="submit" value="Login" class="btn btn-success btn-block">
-                            <a href="{{url_for('register')}}" class="btn btn-primary btn-block">Register</a>
+                        <div class="d-grid gap-2">
+                            <input type="submit" value="Login" class="btn btn-success">
+                            <a href="{{url_for('register')}}" class="btn btn-primary">Register</a>
                         </div>
                     </form>
                 </div>
-            </div>    
+            </div>
         </div>
     </div>
+</div>
 {% endblock %}
