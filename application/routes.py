@@ -18,14 +18,9 @@ def login_required(f):
         return f(*args, **kwargs)
     return wrap
 
-@app.route("/home")
+@app.route("/")
 def index():
     return render_template("index.html", navindex=True)
-
-@app.route("/catalog")
-@login_required
-def catalog():
-    return render_template("catalog.html", navcatalog=True)
 
 @app.route("/recommend")
 @login_required
@@ -43,9 +38,9 @@ def recommend():
     # Pass the movie data to the recommend.html template
     return render_template("recommend.html", navrecommend=True, movies=movies)
 
-@app.route("/reviews")
+@app.route("/toprated")
 @login_required
-def reviews():
+def toprated():
     page = request.args.get('page', 1, type=int)
     per_page = 10
 
@@ -65,11 +60,11 @@ def reviews():
     movies = cur.fetchall()
     con.close()
 
-    return render_template("reviews.html", movies=movies, navreviews=True, total_pages=total_pages, current_page=page)
+    return render_template("toprated.html", movies=movies, navtoprated=True, total_pages=total_pages, current_page=page)
 
-@app.route("/new")
+@app.route("/newrelease")
 @login_required
-def new():
+def newrelease():
     page = request.args.get('page', 1, type=int)
     per_page = 10
 
@@ -89,11 +84,11 @@ def new():
     movies = cur.fetchall()
     con.close()
 
-    return render_template("newrelease.html", movies=movies, navnew=True, total_pages=total_pages, current_page=page)
+    return render_template("newrelease.html", movies=movies, navnewrelease=True, total_pages=total_pages, current_page=page)
 
 @app.route("/popularity")
 @login_required
-def pop():
+def popularity():
     page = request.args.get('page', 1, type=int)
     per_page = 10
 
@@ -113,12 +108,36 @@ def pop():
     movies = cur.fetchall()
     con.close()
 
-    return render_template("popularity.html", movies=movies, navpop=True, total_pages=total_pages, current_page=page)
+    return render_template("popularity.html", movies=movies, navpopularity=True, total_pages=total_pages, current_page=page)
 
 @app.route("/about")
 @login_required
 def about():
     return render_template("about.html", navabout=True)
+
+@app.route("/search", methods=['GET', 'POST'])
+@login_required
+def search():
+    if request.method == 'POST':
+        query = request.form.get('query')
+        con = sqlite3.connect('movies.db')
+        con.row_factory = sqlite3.Row
+        cur = con.cursor()
+        
+        # Perform search query against the database
+        cur.execute("""
+            SELECT movie.title, movie.overview, person.person_name
+            FROM movie 
+            JOIN movie_cast ON movie.movie_id = movie_cast.movie_id 
+            JOIN person ON movie_cast.person_id = person.person_id 
+            WHERE movie.title LIKE ? OR movie.overview LIKE ? OR person.person_name LIKE ?
+        """, ('%' + query + '%', '%' + query + '%', '%' + query + '%'))
+        
+        movies = cur.fetchall()
+        con.close()
+        return render_template("search.html", navsearch=True, search_page=True, movies=movies, query=query)
+    else:
+        return render_template("search.html", navsearch=True, search_page=True)
 
 @app.route("/login",methods=['GET','POST'])
 def login():
@@ -134,7 +153,7 @@ def login():
         if data:
             session['name']=data['name']
             session['password']=data['password']
-            return redirect('home')
+            return redirect('/')
         else:
             flash('Username and Password Mismatch','danger')
     
