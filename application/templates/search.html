@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% if movies %}
+        <h2>Search Results for "{{ query }}"</h2>
+        <table id="movietable" class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Movie Title</th>
+                    <th>Actor</th>
+                    <th>Overview</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for movie in movies %}
+                <tr>
+                    <td> {{ movie["title"] }} </td>
+                    <td> {{ movie["person_name"] }} </td>
+                    <td> {{ movie["overview"] }} </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No movies found for "{{ query }}"</p>
+    {% endif %}
+{% endblock %}
