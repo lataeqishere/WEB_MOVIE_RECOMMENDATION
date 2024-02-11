@@ -1,10 +1,15 @@
 {% extends "layout.html" %}
 
 {% block content %}
-
-<div class="container">
-        <h1 class="text-success">Welcome : {{session['name']}}</h1>
-        <hr>
-        <a href="{{url_for('logout')}}" class="btn btn-primary btn-block">Logout</a>
+<div class="container mt-4 mb-4 p-3 d-flex justify-content-center"> 
+        <div class="card p-4"> 
+                <div class=" image d-flex flex-column justify-content-center align-items-center"> 
+                        <span class="name mt-3">{{ session['name'] }}</span>
+                        <div class="logout-btn">
+                                <br>
+                                <a href="{{url_for('logout')}}" class="btn btn-danger btn-lg">Logout</a>
+                        </div>
+                </div> 
+        </div>
 </div>
 {% endblock %}
