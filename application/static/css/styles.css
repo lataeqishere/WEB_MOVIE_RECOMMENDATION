@@ -1,0 +1,92 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'SF Pro Display', sans-serif;
+}
+
+.navbar-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.nav-link {
+    font-size: 16px;
+    margin: 3px;
+    color: #fff!important;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    border-bottom: 1px solid #fff!important;
+}
+
+.activate{
+    font-size: 16px;
+    margin: 3px;
+    color: #fff!important;
+    font-weight: bold;
+    text-shadow: rgb(100, 255, 53) 2px 0px 8px;
+}
+
+.about-section {
+    background: url(/static/images/life.jpg) no-repeat left;
+    background-size: 80%;
+    background-color: #fdfdfd;
+    overflow: hidden;
+    padding: 100px 0;
+}
+
+.inner-container {
+    width: 55%;
+    float: right;
+    background-color: #fdfdfd;
+    padding: 150px;
+}
+
+.inner-container h1{
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.text {
+    font-size: 13px;
+    color: #545454;
+    line-height: 30px;
+    text-align: justify;
+    margin-bottom: 40px;
+}
+
+.contact {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+@media screen and (max-width:1200px){
+    .inner-container{
+        padding: 80px;
+    }
+}
+
+@media screen and (max-width:1000px){
+    .about-section{
+        background-size: 100%;
+        padding: 100px 40px;
+    }
+    .inner-container{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:600px){
+    .about-section{
+        padding: 0;
+    }
+    .inner-container{
+        padding: 60px;
+    }
+}
