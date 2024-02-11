@@ -1,9 +1,16 @@
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'SF Pro Display', sans-serif;
+    
 }
+
+.btn-nav{
+    color: #ff1ead !important;
+}
+
 
 .navbar-brand {
     font-family: 'Bebas Neue', sans-serif;
@@ -14,18 +21,18 @@
 .nav-link {
     font-size: 16px;
     margin: 3px;
-    color: #fff!important;
+    color: #ff1ead !important;
     font-weight: 500;
 }
 
 .nav-link:hover {
-    border-bottom: 1px solid #fff!important;
+    border-bottom: 1px solid #ff1ead !important;
 }
 
 .activate{
     font-size: 16px;
     margin: 3px;
-    color: #fff!important;
+    color: #ff1ead !important;
     font-weight: bold;
     text-shadow: rgb(100, 255, 53) 2px 0px 8px;
 }
@@ -33,15 +40,38 @@
 .about-section {
     background: url(/static/images/life.jpg) no-repeat left;
     background-size: 80%;
-    background-color: #fdfdfd;
+    background-color: white;
     overflow: hidden;
     padding: 100px 0;
+}
+
+.btn-lg{
+    background-color: #ff1ead !important;
+    display: flex;
+    vertical-align:middle;
+    width: 150px;
+
+}
+.index-texts{
+    font-family:'SF Pro Display';
+    font-size: 140px;
+    font-weight: 900;
+    font-style: italic;
+    color: #ff1ead;
+}
+
+.page-header{
+    font-family:'SF Pro Display';
+    font-size: 140px;
+    font-weight: 900;
+    font-style: italic;
+    color: #ff1ead;
 }
 
 .inner-container {
     width: 55%;
     float: right;
-    background-color: #fdfdfd;
+    background-color: white;
     padding: 150px;
 }
 
@@ -50,10 +80,16 @@
     font-size: 30px;
     font-weight: 900;
 }
+.btn-sub{
+    background-color: #ff1ead !important;
+}
+
+.btn-gr{
+    background-color: #f7b2d8 !important}
 
 .text {
     font-size: 13px;
-    color: #545454;
+    color: #ff1ead;
     line-height: 30px;
     text-align: justify;
     margin-bottom: 40px;
